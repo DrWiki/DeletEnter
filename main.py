@@ -1,4 +1,4 @@
-from PyQt5 import QtWidgets,QtGui
+from PyQt5 import QtWidgets,QtGui, QtCore
 import sys
 from ParentUI import DeletEnter
 import pyqtgraph as pg
@@ -7,6 +7,7 @@ class Win(DeletEnter.Ui_MainWindow, QtWidgets.QMainWindow):
     def __init__(self, parent=None):
         super(Win, self).__init__(parent)
         self.setupUi(self)
+        self.setWindowFlags(QtCore.Qt.WindowStaysOnTopHint)
         # 画布1
         self.PBDo.clicked.connect(self.do)
         self.TB1.setText("We present a soft haptic sensor named Insight that uses vision \n \
@@ -47,6 +48,7 @@ differently shaped sensors or other sensor designs. We also provide\n \
 ideas on how to adjust Insight’s design parameters for other applica-\n \
 tions, such as the field of view of the camera, the arrangement of the\n \
 light sources and the composition of the elastomer.")
+
 
     def do(self):
         string = self.TB1.toPlainText()
